@@ -18,8 +18,7 @@
 /* 
  * Opdracht 2: Zet hier de $buttons array neer 
  */
-
-
+$buttons = array(128,40000,38179.76);
 /******************************************* OPDRACHT 2 doe je hierboven *******************************************/
 /*******************************************************************************************************************/
 
@@ -41,10 +40,11 @@ function calculateBitcoinAmount()
     }
 
     //SCHRIJF JE CODE.
-
-
-
+$prijs = getBitcoinPrice();
+$bitcoinPrijs = $euro / $prijs;
+return $bitcoinPrijs;
 }
+
 /******************************************* OPDRACHT 3 doe je hierboven *******************************************/
 /*******************************************************************************************************************/
 
@@ -74,7 +74,9 @@ $transactions = [
 if (isset($_GET['euro'])) {
 
     $euro = $_GET['euro']; //deze regel laten staan
-
+    $aantal = calculateBitcoinAmount();
+    $bitcoin = getBitcoinPrice();
+    array_push($transactions, [$bitcoin, $euro, $aantal]);
     /* SCHRIJF HIER JE CODE.
      * Schrijf hieronder de code om de gekochte bitcoin aan de array $transactions toe te voegen.
      * Je voegt een bitcoinprijs toe, de prijs in euro's en het aantal gekochte bitcoins.
@@ -142,6 +144,7 @@ function getBitcoinData()
 
     return $bitcoinInstance;
 }
+
 
 /************************* De functies hierboven heb je nodig en hoef je niet aan te passen ************************/
 /*******************************************************************************************************************/
